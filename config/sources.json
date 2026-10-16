@@ -1,0 +1,7 @@
+{
+  "_comment": "Used when find_leads / draft_email get no source. Tried in order; the first one that can be read wins. Entries: a .csv file name in the data folder, or a Google Sheets link shared as 'Anyone with the link can view'.",
+  "default_sources": [
+    "leads.csv",
+    "https://docs.google.com/spreadsheets/d/1Yq7TsR5LXyrmqZ_bNB8mKZ7h5dEw52IgijYPbzuXfbw/edit"
+  ]
+}

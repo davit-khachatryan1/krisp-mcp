@@ -1,0 +1,109 @@
+{
+  "_comment": "All ICP rules live here. Change numbers or keywords without touching code.",
+
+  "selection": {
+    "min_score": 50,
+    "min_company_fit": 0.3,
+    "default_limit": 10,
+    "max_per_company": 1
+  },
+
+  "score_weights": {
+    "_comment": "final score = 100 * (persona * persona_weight + company * company_weight)",
+    "persona": 0.6,
+    "company": 0.4
+  },
+
+  "authority": {
+    "_comment": "Can this person buy? 0 means we never contact them.",
+    "c_level": 1.0,
+    "vp": 0.9,
+    "head": 0.8,
+    "director": 0.8,
+    "manager": 0.5,
+    "lead": 0.4,
+    "individual": 0.2,
+    "junior": 0.0
+  },
+
+  "function_relevance": {
+    "_comment": "Does this person's team live on calls? Krisp = call/meeting quality + AI notes.",
+    "sales": 1.0,
+    "customer_success": 1.0,
+    "remote_work": 0.9,
+    "operations": 0.8,
+    "general_management": 0.7,
+    "it": 0.7,
+    "engineering": 0.5,
+    "people": 0.5,
+    "marketing": 0.4,
+    "product": 0.4,
+    "finance": 0.2,
+    "design": 0.2,
+    "admin": 0.1
+  },
+
+  "industry_overrides": {
+    "_comment": "Company type changes how call-heavy a function is. Keys are industry keywords.",
+    "software": { "engineering": 0.8, "it": 0.8 },
+    "bpo": { "operations": 1.0, "customer_success": 1.0, "it": 0.8 },
+    "outsourcing": { "operations": 1.0, "customer_success": 1.0, "it": 0.8 },
+    "call center": { "operations": 1.0, "customer_success": 1.0 },
+    "consulting": { "operations": 0.9, "people": 0.6 },
+    "recruit": { "people": 0.9, "operations": 0.9 },
+    "hr services": { "people": 0.9 }
+  },
+
+  "industries": {
+    "_comment": "Keyword match on the industry text, first tier that matches wins.",
+    "strong": ["software", "saas", "bpo", "outsourcing", "call center", "contact center", "consulting",
+               "financial", "fintech", "insurance", "health", "legal", "recruit", "staffing",
+               "hr services", "human resources", "training", "telecom"],
+    "medium": ["education", "edtech", "marketing", "agency", "media", "gaming", "real estate", "design"],
+    "weak": ["retail", "food", "beverage", "restaurant", "hospitality", "manufacturing", "logistics",
+             "construction", "agriculture", "mining"],
+    "scores": { "strong": 1.0, "medium": 0.6, "weak": 0.2, "unknown": 0.5 }
+  },
+
+  "headcount": {
+    "_comment": "Ranges are inclusive. Unknown headcount gets a neutral score, it is not excluded.",
+    "bands": [
+      { "max": 19, "score": 0.1 },
+      { "max": 49, "score": 0.5 },
+      { "max": 5000, "score": 1.0 },
+      { "max": 20000, "score": 0.7 },
+      { "max": null, "score": 0.5 }
+    ],
+    "unknown_score": 0.5
+  },
+
+  "regulated_industries": ["financial", "fintech", "insurance", "health", "legal", "bank"],
+
+  "role_based_local_parts": ["info", "sales", "hello", "contact", "support", "admin", "office", "team",
+                             "hr", "jobs", "careers", "marketing", "billing", "noreply", "no-reply", "help"],
+
+  "free_email_domains": ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com", "icloud.com",
+                         "aol.com", "proton.me", "protonmail.com", "mail.ru", "yandex.ru"],
+
+  "column_aliases": {
+    "lead_id": ["lead_id", "id", "lead", "record_id", "contact_id"],
+    "first_name": ["first_name", "firstname", "first", "given_name"],
+    "last_name": ["last_name", "lastname", "last", "surname", "family_name"],
+    "full_name": ["full_name", "name", "contact_name", "fullname"],
+    "title": ["title", "job_title", "position", "role", "jobtitle", "designation"],
+    "company": ["company", "company_name", "organization", "organisation", "account", "account_name", "employer"],
+    "industry": ["industry", "sector", "vertical"],
+    "headcount": ["headcount", "employees", "employee_count", "company_size", "size", "num_employees", "number_of_employees"],
+    "country": ["country", "location", "country_name", "hq_country"],
+    "email": ["email", "e_mail", "email_address", "work_email", "mail"]
+  },
+
+  "country_aliases": {
+    "usa": "United States", "us": "United States", "u s": "United States", "u s a": "United States",
+    "united states of america": "United States", "america": "United States",
+    "uk": "United Kingdom", "u k": "United Kingdom", "great britain": "United Kingdom",
+    "england": "United Kingdom", "britain": "United Kingdom",
+    "holland": "Netherlands", "the netherlands": "Netherlands",
+    "deutschland": "Germany", "uae": "United Arab Emirates"
+  }
+}

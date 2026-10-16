@@ -1,0 +1,29 @@
+{
+  "name": "krisp-leads-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that scores mock leads against Krisp's ICP and drafts first emails (drafts only, nothing is sent).",
+  "type": "module",
+  "private": true,
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "test": "vitest run",
+    "demo": "tsx scripts/demo-client.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "csv-parse": "^7.0.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
